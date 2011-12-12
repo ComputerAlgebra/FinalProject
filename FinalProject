@@ -1,0 +1,19 @@
+/*Teliki-Oloklirwmeni Ekdosi Ergasias*/
+/*Andreas Konstantakos - AEM:642 - andkonst@uth.gr*/
+/*Georgios Veroulis - AEM:654 - geveroul@uth.gr*/
+/*Chris Alimisis - AEM:769 - chalimis@uth.gr*/
+
+falling_factorial(a,n):= { 
+  local k,l,m;
+   l:=seq(a-k,k,0,n-1,1);
+   m:=mul(l);
+  return(m);
+}:;
+
+difference_delta(poly(k),k):={
+  local result,p,l;
+  l:=poly(k);
+  p:=expand(coeffs(l));
+  l:=poly2symb(p,x+1)-poly2symb(p,x);
+  εκτύπωση ("Result:", simplify(expand(l)));
+}:;
