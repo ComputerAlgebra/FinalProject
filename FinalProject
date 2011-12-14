@@ -17,3 +17,27 @@ difference_delta(poly(k),k):={
   l:=poly2symb(p,x+1)-poly2symb(p,x);
   εκτύπωση ("Result:", simplify(expand(l)));
 }:;
+
+help_stirling(c,d):= {
+  local a,n,k;
+  a:=matrix(20,20,0);
+  for(n:=1;n<20;n++)
+  {
+    a[n,1]:=1;
+    a[n,n]:=1;
+    a[n,0]:=0;
+    a[0,0]:=1;
+  }
+  for(n:=1;n<20;n++){
+    for(k:=1;k<n;k++)
+    {
+      a[n,k]:=a[n-1,k-1] + k*a[n-1,k]
+    }
+  }
+  return a[c,d];
+}:;
+
+stirlingS2(a):= { 
+  local k;
+  for(k:=0;k<a;k++){εκτύπωση(help_stirling(a,k));};
+}:;
