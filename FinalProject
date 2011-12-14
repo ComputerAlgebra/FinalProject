@@ -41,3 +41,31 @@ stirlingS2(a):= {
   local k;
   for(k:=0;k<a;k++){εκτύπωση(help_stirling(a,k));};
 }:;
+
+sum_final(poly(k),k):={
+  local p,vals,len,len2,l,j,sx,res,res1,divo;
+  divo:=1;
+  p:=expand(poly(k));
+  vals:=coeffs(p);
+  len:=length(vals);
+  res:=0;
+  for(j:=0;j<len;j++)  
+  {
+    if(vals[j]!=0) 
+    {
+      sx:=StirlingS2(len-j-1);      
+      len2:=length(sx);
+      divo:=len2;
+      for(l:=0;l<len2-1;l++)  
+      {
+        res1:=(vals[j]*sx[len2-1-l]*(falling_factorial(x, (len2-l))));
+        res1:=res1/divo;
+        res:=res+res1; 
+        divo--;
+      }  
+    }
+  }   
+  print("Result:",res);
+  print("Expanded Result:", expand(res));
+  print("Simplified expanded result:", simplify(expand(res)));
+}:;
